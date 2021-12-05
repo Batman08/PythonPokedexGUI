@@ -30,6 +30,10 @@
     <Content Include="test.txt">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="WindowIcon\favicon-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WindowIcon\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

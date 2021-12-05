@@ -6,9 +6,12 @@ import urllib3
 from io import BytesIO
 from StringHelper import *
 
+ICON_LOCATION = 'WindowIcon/favicon-32x32.png'
 WINDOW = tk.Tk()
 WINDOW.geometry("600x500")
 WINDOW.title("WeSellAnyCode Python Pokedex")
+WINDOW.iconphoto(False, tk.PhotoImage(file=ICON_LOCATION))
+
 
 def create_label(label, label_text, text_size):
     label = tk.Label(WINDOW, text=label_text)
