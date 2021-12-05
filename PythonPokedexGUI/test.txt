@@ -1,0 +1,105 @@
+
+class PokedexGUI:
+    def __init__(self):
+        self.pokemon_image = POKEMONE_IMAGE
+        self.pokemon_information = POKEMONE_INFORMATION
+        self.pokemon_types = POKEMONE_TYPES
+        self.label_id_name = LABEL_ID_NAME
+        self.text_id_name = TEXT_ID_NAME
+        self.button_load = BUTTON_LOAD 
+
+
+    WINDOW = tk.Tk()
+    WINDOW.geometry("600x500")
+    WINDOW.title("WeSellAnyCode Python Pokedex")
+    
+    def load_pokemon(self):
+        pokemon = pypokedex.get(name=text_id_name.get(1.0, "end-1c"))
+    
+        http = urllib3.PoolManager()
+        response = http.request('GET', pokemon.sprites.front.get('default'))
+        image = PIL.Image.open(BytesIO(response.data))
+    
+        img = PIL.ImageTk.PhotoImage(image)
+        self.pokemon_image.config(image=img)
+        self.pokemon_image.image = img
+    
+        self.pokemon_information.config(text=f"{pokemond.dex} - {pokemon.name}")
+        self.pokemon_types.config(text=f"{pokemon.types}")
+    
+    def create_label(label, text_size):
+        label.config(font=("Arial", text_size))
+        label.pack(padx=10, pady=10)
+    
+    def create_text_field(text_id_name):
+        text_id_name.config(font=("Arial", 20))
+        text_id_name.pack(padx=10, pady=10)
+    
+    def create_button(self):
+        self.button_load.config(font=("Arial", 20))
+        self.button_load.pack(padx=10, pady=10)
+    
+    def create_window_labels(self):
+        create_label(TITLE_LABEL, 32)
+        create_label(self.pokemon_image, 32)
+        create_label(self.pokemon_image, 32)
+        create_label(self.pokemon_types, 32)
+        create_label(self.label_id_name, 20)
+        create_text_field(self.text_id_name)
+        create_button()
+    
+    WINDOW.mainloop()
+    
+program = PokedexGUI()
+program.create_window_labels()
+    #TITLE_LABEL = tk.Label(WINDOW, text="WeSellAnyCode Pokedex")
+    #TITLE_LABEL.config(font=("Arial", 32))
+    #TITLE_LABEL.pack(padx=10, pady=10) 
+    #time --- 12:52
+    
+    #POKEMONE_IMAGE = tk.Label(WINDOW)
+    #POKEMONE_IMAGE.pack(padx=10, pady=10)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import tkinter as tk
+from PythonPokedexGUI import PokedexGUI as pk
+#WINDOW = tk.Tk()
+
+WINDOW_TITLE_NAME = "WeSellAnyCode Pokedex"
+
+TITLE_LABEL = tk.Label(pk.WINDOW, text=WINDOW_TITLE_NAME)
+POKEMONE_IMAGE = tk.Label(pk.WINDOW)
+POKEMONE_INFORMATION = tk.Label(pk.WINDOW)
+POKEMONE_TYPES = tk.Label(pk.WINDOW)
+LABEL_ID_NAME = tk.Label(pk.WINDOW)
+
+TEXT_ID_NAME = tk.Text(pk.WINDOW, height=1)
+#TEXT_ID_NAME: tk.Text() = ""
+BUTTON_LOAD = tk.Button(pk.WINDOW, text="Load Pokemon", command=pk.load_pokemon())
