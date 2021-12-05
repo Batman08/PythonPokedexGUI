@@ -25,37 +25,37 @@ def create_button():
 
 create_label(TITLE_LABEL, WINDOW_TITLE_NAME, 32)
 
-POKEMONE_IMAGE = tk.Label(WINDOW, text=None)
-POKEMONE_IMAGE.config(font=("Arial", 32))
-POKEMONE_IMAGE.pack(padx=10, pady=10)
+pokemon_image = tk.Label(WINDOW, text=None)
+pokemon_image.config(font=("Arial", 32))
+pokemon_image.pack(padx=10, pady=10)
 
-POKEMONE_INFORMATION = tk.Label(WINDOW, text=None)
-POKEMONE_INFORMATION.config(font=("Arial", 32))
-POKEMONE_INFORMATION.pack(padx=10, pady=10)
+pokemon_information = tk.Label(WINDOW, text=None)
+pokemon_information.config(font=("Arial", 32))
+pokemon_information.pack(padx=10, pady=10)
 
-POKEMONE_TYPES = tk.Label(WINDOW, text=None)
-POKEMONE_TYPES.config(font=("Arial", 32))
-POKEMONE_TYPES.pack(padx=10, pady=10)
+pokemon_types = tk.Label(WINDOW, text=None)
+pokemon_types.config(font=("Arial", 32))
+pokemon_types.pack(padx=10, pady=10)
 
 create_label(LABEL_ID_NAME, None, 20)
 
-TEXT_ID_NAME = tk.Text(WINDOW, height=1)
-TEXT_ID_NAME.config(font=("Arial", 20))
-TEXT_ID_NAME.pack(padx=10, pady=10)
+text_id_name = tk.Text(WINDOW, height=1)
+text_id_name.config(font=("Arial", 20))
+text_id_name.pack(padx=10, pady=10)
 
 def load_pokemon():
-    pokemon = pypokedex.get(name=TEXT_ID_NAME.get(1.0, "end-1c"))
+    pokemon = pypokedex.get(name=text_id_name.get(1.0, "end-1c"))
 
     http = urllib3.PoolManager()
     response = http.request('GET', pokemon.sprites.front.get('default'))
     image = PIL.Image.open(BytesIO(response.data))
 
     img = PIL.ImageTk.PhotoImage(image)
-    POKEMONE_IMAGE.config(image=img)
-    POKEMONE_IMAGE.image = img
+    pokemon_image.config(image=img)
+    pokemon_image.image = img
 
-    POKEMONE_INFORMATION.config(text=f"{pokemon.dex} - {pokemon.name}")
-    POKEMONE_TYPES.config(text=f"{pokemon.types}")
+    pokemon_information.config(text=f"{pokemon.dex} - {pokemon.name}")
+    pokemon_types.config(text=f"{pokemon.types}")
 
 
 create_button()

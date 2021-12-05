@@ -7,6 +7,6 @@ TITLE_LABEL = ""
 #POKEMONE_TYPES = ""
 
 LABEL_ID_NAME = ""
-TEXT_ID_NAME=""
+#TEXT_ID_NAME=""
 #TEXT_ID_NAME: tk.Text() = ""
 BUTTON_LOAD = ""
